@@ -22,7 +22,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
     testImplementation 'io.qameta.allure:allure-junit5:2.22.0'
-    testImplementation 'com.codeborne:selenide:6.14.0'
+    implementation 'com.codeborne:selenide:6.14.0'
 }
 
 test {

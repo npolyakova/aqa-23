@@ -7,19 +7,23 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import java.util.Locale;
+
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.not;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class FirstSelenideTest {
 
     @Test
     public void shouldOpenYandex() {
-        Faker faker = new Faker(); // TODO (new Locale("rus"));
+        Faker faker = new Faker(new Locale("ru" ,"RU")); // TODO (new Locale("rus"));
+//        System.out.println(faker.address().city());
+
         String query = faker.artist().name();
 
         Configuration.baseUrl = "https://dzen.ru";
@@ -33,11 +37,9 @@ public class FirstSelenideTest {
 
         $("#uniq16784632278721").shouldHave(attribute("value", query));
 
-//        $$("#search-result li").get(0).shouldHave(text("Иннополис"));
         for (SelenideElement el : $$("#search-result li.serp-item")
                 .filter(not(have(attribute("data-fast-name", "multiusurveys"))))) {
+            el.shouldHave(text("Иннополис"));
         }
-
-        sleep(2000);
     }
 }
