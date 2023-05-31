@@ -1,8 +1,10 @@
 package allure.selenide;
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class BasePage {
 
-    public By headerPage = By.className("title");
+    public SelenideElement headerPage = $(".title");
 }

@@ -1,12 +1,14 @@
 package allure.selenide;
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.SelenideElement;
 
-public class CartPage {
+import static com.codeborne.selenide.Selenide.$;
 
-    public By buttonRemove = By.id("remove-sauce-labs-backpack");
+public class CartPage extends BasePage {
 
-    public By blockCartItem = By.className("cart_item");
+    public SelenideElement buttonRemove = $("#remove-sauce-labs-backpack");
 
-    public By blockRemovedCartItem = By.className("removed_cart_item");
+    public SelenideElement blockCartItem = $(".cart_item");
+
+    public SelenideElement blockRemovedCartItem = $(".removed_cart_item");
 }

@@ -21,8 +21,8 @@ public class FirstSelenideTest {
 
     @Test
     public void shouldOpenYandex() {
-        Faker faker = new Faker(new Locale("ru" ,"RU")); // TODO (new Locale("rus"));
-//        System.out.println(faker.address().city());
+        Faker faker = new Faker(new Locale("ru" ,"RU"));
+//        System.out.println(faker.phoneNumber().phoneNumber());
 
         String query = faker.artist().name();
 
@@ -33,7 +33,6 @@ public class FirstSelenideTest {
         $("[aria-label='Запрос']").sendKeys(query, Keys.ENTER);
 
         Selenide.webdriver().driver().switchTo().window(1);
-// TODO        $(shadowCss( "div", "[role=\"combobox\"]")).shouldHave(text("Иннополис"));
 
         $("#uniq16784632278721").shouldHave(attribute("value", query));
 

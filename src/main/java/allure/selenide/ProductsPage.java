@@ -1,23 +1,31 @@
 package allure.selenide;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
 
 public class ProductsPage extends BasePage {
+    public SelenideElement divProductItem = $(".inventory_item");
 
-    WebDriver driver;
+    public SelenideElement buttonAddToCart = divProductItem.$("#add-to-cart-sauce-labs-backpack");
 
-    public By divProductItem = By.cssSelector(".inventory_item");
+    public SelenideElement buttonRemoveFromCart = $("#remove-sauce-labs-backpack");
 
-    public By buttonAddToCart = By.id("add-to-cart-sauce-labs-backpack");
+    public SelenideElement iconCartBadge = $(".shopping_cart_badge");
 
-    public By buttonRemoveFromCart = By.id("remove-sauce-labs-backpack");
+    public SelenideElement linkShoppingCart = $(".shopping_cart_link");
 
-    public By iconCartBadge = By.className("shopping_cart_badge");
-
-    public By linkShoppingCart = By.className("shopping_cart_link");
-
-    public ProductsPage(WebDriver driver) {
-        this.driver = driver;
+//    CartPage clickToCartButton() {
+//        linkShoppingCart.click();
+//        return page(CartPage.class);
+//    }
+//
+    public CartPage openCart() {
+        linkShoppingCart.click();
+        CartPage cr = page(CartPage.class);
+        cr.headerPage.shouldHave(text("Your Cart"));
+        return page(CartPage.class);
     }
 }

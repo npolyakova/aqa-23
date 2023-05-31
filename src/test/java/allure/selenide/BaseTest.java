@@ -1,19 +1,14 @@
 package allure.selenide;
 
-import com.github.javafaker.Faker;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
-    public static ChromeDriver driver;
 
-    public String baseUrl;
-
-    public WebDriverWait wait;
-
-    public static final Faker faker = new Faker();
+    SignInPage signInPage;
+    ProductsPage productsPage;
+    CartPage cartPage;
 
     @BeforeAll
     public static void setProperty() {
@@ -22,7 +17,7 @@ public class BaseTest {
 
     @AfterEach
     public void closeAfterEach() {
-        driver.close();
+        WebDriverRunner.closeWebDriver();
     }
 
 }
